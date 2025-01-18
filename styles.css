@@ -73,8 +73,14 @@ body {
   font-weight: bold;
   transition: background 0.3s ease;
 }
-.cta-button:hover {
-  background: #00bfa5;
+.cta-button:hover::before {
+ top: -30px;
+ left: -30px;
+}
+
+button:active:: ::before {
+background: #5d33db
+transition: background 0s;
 }
 
 /* Section Headings */
