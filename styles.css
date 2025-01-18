@@ -65,7 +65,7 @@ body {
   margin-bottom: 2rem;
 }
 .cta-button {
-  background: #00d1b2; /* Accent color e.g., a teal or bright green */
+  background: #5d33db; /* Accent color e.g., a teal or bright green */
   color: #fff;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
@@ -78,7 +78,7 @@ body {
  left: -30px;
 }
 
-button:active:: ::before {
+button:active::before {
 background: #5d33db
 transition: background 0s;
 }
