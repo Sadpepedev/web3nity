@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Ensures mobile scaling is correct -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Web3nity - Web3 Support Agency</title>
   <link rel="stylesheet" href="styles.css" />
   <!-- Example Google Font -->
@@ -21,6 +22,8 @@
       <a href="#about">About</a>
       <a href="#founders">Founders</a>
       <a href="#clients">Clients</a>
+      <!-- New Pitch Deck Link -->
+      <a href="#pitchdeck">Pitch Deck</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
@@ -37,7 +40,7 @@
       <p>
         Streamlined Discord moderation and web support for the next generation of decentralized platforms.
       </p>
-      <a href="#contact" class="cta-button">Get in Touch</a>
+      <a href="#contact" class="cta-button">Contact Us</a>
     </div>
   </section>
 
@@ -79,10 +82,30 @@
     </div>
   </section>
 
+  <!-- Pitch Deck Section -->
+  <section id="pitchdeck" class="pitchdeck">
+    <h2>Our Pitch Deck</h2>
+    <p>
+      Curious about our roadmap, vision, and how we can help your Web3 project thrive?
+      Take a look at our pitch deck to learn more about what Web3nity can do for you.
+    </p>
+    <!-- Link to a PDF or an external resource -->
+    <a 
+      href="docs/Web3nity-Pitch-Deck.pdf" 
+      target="_blank"
+      class="cta-button"
+    >
+      View Pitch Deck
+    </a>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p>Have any questions or want to learn more about our services? Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:</p>
+    <p>
+      Have any questions or want to learn more about our services?
+      Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:
+    </p>
     <form>
       <div class="form-group">
         <label for="name">Your Name</label>
@@ -113,5 +136,8 @@
   </footer>
 
   <script src="script.js"></script>
+</body>
+</html>
+
 </body>
 </html>
