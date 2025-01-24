@@ -4,32 +4,45 @@
   <meta charset="UTF-8" />
   <!-- Ensures mobile scaling is correct -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web3nity - Web3 Support Agency</title>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Example Google Font -->
+  <title>Web3nity - Empowering Web3 Communities</title>
+  
+  <!-- Meta Description for SEO -->
+  <meta 
+    name="description" 
+    content="Web3nity is a futuristic Web3 support agency specializing in community management, moderation, and growth strategies for crypto projects."
+  />
+
+  <!-- Google Fonts: Orbitron (for headlines) & Open Sans (for body text) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link 
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Open+Sans:wght@400;700&display=swap" 
     rel="stylesheet"
   />
+  
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="logo">Web3nity</div>
-    <div class="menu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#founders">Founders</a>
-      <a href="#clients">Clients</a>
-      <!-- New Pitch Deck Link -->
-      <a href="#pitchdeck">Pitch Deck</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="navbar-container">
+      <div class="logo">Web3nity</div>
+      
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#team">Team</a>
+        <a href="#clients">Clients</a>
+        <a href="#pitchdeck">Pitch Deck</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -38,34 +51,50 @@
     <div class="hero-content">
       <h1>Empowering Web3 Communities</h1>
       <p>
-        Streamlined Discord moderation and web support for the next generation of decentralized platforms.
+        We provide next-level Discord moderation, community growth, and web support for the decentralized era.
       </p>
-      <a href="#contact" class="cta-button">Contact Us</a>
+      <a href="#services" class="cta-button">Discover Our Services</a>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Web3nity</h2>
-    <p>
-      At Web3nity, our mission is to provide top-notch support for Web3 projects, bridging the gap between decentralized technology and the everyday user. 
-      We specialize in Discord community management, website issue resolution, and educational content to empower users in this new digital frontier.
-    </p>
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>What We Do</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Community Management</h3>
+        <p>
+          Engage your community with interactive events, AMA sessions, and educational content. We keep your members informed and excited.
+        </p>
+      </div>
+      <div class="service-card">
+        <h3>Discord Moderation</h3>
+        <p>
+          Our 24/7 moderation ensures a safe, spam-free environment. We focus on building trust while supporting your project’s vision.
+        </p>
+      </div>
+      <div class="service-card">
+        <h3>Growth & Marketing</h3>
+        <p>
+          We strategize to expand your user base, partnering with influencers, running targeted campaigns, and executing community-driven growth hacks.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- Meet the Founders Section -->
-  <section id="founders" class="founders">
-    <h2>Meet the Founders</h2>
+  <!-- Meet the Team Section -->
+  <section id="team" class="team">
+    <h2>Meet Our Founders</h2>
     <div class="founder-grid">
       <div class="founder">
-        <img src="images/founder1.jpg" alt="Founder 1">
+        <img src="images/founder1.jpg" alt="Jane Doe">
         <h3>Jane Doe</h3>
-        <p>Jane is a veteran community manager with 5+ years of experience in blockchain and Discord moderation. She loves helping new users get onboarded to Web3.</p>
+        <p>Blockchain enthusiast & community guru with a passion for educating new users in the fast-evolving Web3 space.</p>
       </div>
       <div class="founder">
-        <img src="images/founder2.jpg" alt="Founder 2">
+        <img src="images/founder2.jpg" alt="John Smith">
         <h3>John Smith</h3>
-        <p>John is a full-stack web developer turned Web3 enthusiast. He ensures all technical issues on the front-end or back-end are swiftly addressed.</p>
+        <p>Full-stack developer & growth hacker with 5+ years in Web3, ensuring seamless integration and user-friendly solutions.</p>
       </div>
     </div>
   </section>
@@ -73,8 +102,9 @@
   <!-- Clients Section -->
   <section id="clients" class="clients">
     <h2>Our Clients</h2>
+    <p>Trusted by leading projects in the crypto space</p>
     <div class="clients-logos">
-      <!-- Example brand logos. Replace with real brand images -->
+      <!-- Example brand logos (replace with real images) -->
       <img src="images/client1.png" alt="Client 1">
       <img src="images/client2.png" alt="Client 2">
       <img src="images/client3.png" alt="Client 3">
@@ -84,12 +114,10 @@
 
   <!-- Pitch Deck Section -->
   <section id="pitchdeck" class="pitchdeck">
-    <h2>Our Pitch Deck</h2>
+    <h2>Pitch Deck</h2>
     <p>
-      Curious about our roadmap, vision, and how we can help your Web3 project thrive?
-      Take a look at our pitch deck to learn more about what Web3nity can do for you.
+      Learn about our roadmap, vision, and how we can elevate your Web3 project to new heights.
     </p>
-    <!-- Link to a PDF or an external resource -->
     <a 
       href="docs/Web3nity-Pitch-Deck.pdf" 
       target="_blank"
@@ -103,8 +131,9 @@
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <p>
-      Have any questions or want to learn more about our services?
-      Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:
+      Ready to supercharge your community? Email us at 
+      <strong>contact@web3nity.xyz</strong> 
+      or fill out the form below:
     </p>
     <form>
       <div class="form-group">
@@ -129,15 +158,29 @@
       <p>&copy; <span id="year"></span> Web3nity. All Rights Reserved.</p>
       <div class="footer-links">
         <a href="#home">Home</a> |
-        <a href="#about">About</a> |
+        <a href="#services">Services</a> |
         <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Script -->
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('active');
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.menu').classList.remove('active');
+      });
+    });
+
+    // Display current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
-</body>
-</html>
