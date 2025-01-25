@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web3nity - Unified CTA Buttons</title>
+  <title>Web3nity - Vaporwave & Unified CTAs</title>
 
-  <!-- Basic Meta Description -->
+  <!-- Meta Description -->
   <meta 
     name="description" 
-    content="Web3nity is a Web3 support agency specializing in community management, moderation, and growth for crypto projects."
+    content="Web3nity is a futuristic Web3 support agency specializing in community management, moderation, and growth strategies for crypto projects."
   />
 
   <!-- Google Fonts: Orbitron & Open Sans -->
@@ -17,15 +17,23 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Open+Sans:wght@400;700&display=swap" 
     rel="stylesheet"
   />
-  
-  <!-- Styles -->
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Canvas for free-floating shapes behind everything -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="navbar-container">
       <div class="logo">Web3nity</div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div class="menu">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -42,8 +50,10 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Empowering Web3 Communities</h1>
-      <p>Streamlined Discord moderation and web support for the next generation of decentralized platforms.</p>
-      <!-- Button with the same "slide-in fill" style -->
+      <p>
+        Streamlined Discord moderation and web support for the next generation of decentralized platforms.
+      </p>
+      <!-- "Contact Us" with side-fill animation -->
       <a href="#contact" class="cta-button">Contact Us</a>
     </div>
   </section>
@@ -52,7 +62,8 @@
   <section id="about" class="about">
     <h2>About Web3nity</h2>
     <p>
-      At Web3nity, we provide top-notch support for Web3 projects, bridging the gap between decentralized technology and everyday users.
+      At Web3nity, our mission is to provide top-notch support for Web3 projects, bridging the gap between decentralized technology and everyday users.
+      We specialize in Discord community management, website issue resolution, and educational content to empower users in this new digital frontier.
     </p>
   </section>
 
@@ -62,15 +73,21 @@
     <div class="service-grid">
       <div class="service-card">
         <h3>Community Management</h3>
-        <p>Interactive events, AMA sessions, and educational content to keep your members engaged and excited.</p>
+        <p>
+          Engage your community with interactive events, AMA sessions, and educational content. We keep your members informed and excited.
+        </p>
       </div>
       <div class="service-card">
         <h3>Discord Moderation</h3>
-        <p>24/7 safe, spam-free environment. We focus on building trust while supporting your project’s vision.</p>
+        <p>
+          Our 24/7 moderation ensures a safe, spam-free environment. We focus on building trust while supporting your project’s vision.
+        </p>
       </div>
       <div class="service-card">
         <h3>Growth & Marketing</h3>
-        <p>We strategize to expand your user base, running targeted campaigns and community-driven growth hacks.</p>
+        <p>
+          We strategize to expand your user base, partnering with influencers, running targeted campaigns, and executing community-driven growth hacks.
+        </p>
       </div>
     </div>
   </section>
@@ -82,12 +99,12 @@
       <div class="founder">
         <img src="images/founder1.jpg" alt="Jane Doe">
         <h3>Jane Doe</h3>
-        <p>Jane is a veteran community manager with 5+ years of experience in blockchain and Discord moderation.</p>
+        <p>Jane is a veteran community manager with 5+ years of experience in blockchain and Discord moderation. She loves helping new users onboard to Web3.</p>
       </div>
       <div class="founder">
         <img src="images/founder2.jpg" alt="John Smith">
         <h3>John Smith</h3>
-        <p>John is a full-stack dev turned Web3 enthusiast, ensuring all technical issues are swiftly addressed.</p>
+        <p>John is a full-stack developer turned Web3 enthusiast. He ensures all technical issues on the front-end or back-end are swiftly addressed.</p>
       </div>
     </div>
   </section>
@@ -97,7 +114,7 @@
     <h2>Our Clients</h2>
     <p>Trusted by leading projects in the crypto space</p>
     <div class="clients-logos">
-      <!-- Example logos; replace with real images -->
+      <!-- Example brand logos. Replace with real brand images -->
       <img src="images/client1.png" alt="Client 1">
       <img src="images/client2.png" alt="Client 2">
       <img src="images/client3.png" alt="Client 3">
@@ -108,9 +125,16 @@
   <!-- Pitch Deck Section -->
   <section id="pitchdeck" class="pitchdeck">
     <h2>Our Pitch Deck</h2>
-    <p>Curious about our roadmap, vision, and how we can help your Web3 project thrive? Check out our pitch deck.</p>
-    <!-- EXACT same style for this button -->
-    <a href="docs/Web3nity-Pitch-Deck.pdf" target="_blank" class="cta-button">
+    <p>
+      Curious about our roadmap, vision, and how we can help your Web3 project thrive?
+      Take a look at our pitch deck to learn more about what Web3nity can do for you.
+    </p>
+    <!-- "View Pitch Deck" with same side-fill animation -->
+    <a 
+      href="docs/Web3nity-Pitch-Deck.pdf" 
+      target="_blank"
+      class="cta-button"
+    >
       View Pitch Deck
     </a>
   </section>
@@ -118,7 +142,10 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p>Questions or want to learn more? Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:</p>
+    <p>
+      Have any questions or want to learn more about our services?
+      Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:
+    </p>
     <form>
       <div class="form-group">
         <label for="name">Your Name</label>
@@ -132,7 +159,7 @@
         <label for="message">Message</label>
         <textarea id="message" rows="5" required></textarea>
       </div>
-      <!-- "Send Message" button with same style -->
+      <!-- "Send Message" with same side-fill animation, centered -->
       <button type="submit" class="cta-button send-message-btn">Send Message</button>
     </form>
   </section>
@@ -150,7 +177,7 @@
     </div>
   </footer>
 
-  <!-- JS -->
+  <!-- Script for drifting shapes + nav toggle + year -->
   <script src="script.js"></script>
 </body>
 </html>

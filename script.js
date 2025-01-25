@@ -1,14 +1,14 @@
 /************************************************************************
- * FREE-FLOATING, OUTLINE-ONLY VAPORWAVE SHAPES
+ * FREE-FLOATING VAPORWAVE SHAPES (OUTLINES)
  ************************************************************************/
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
 let width, height;
 
-// Array to store shape objects
+// We'll have an array of shapes that drift around
 let shapes = [];
-const numShapes = 12; // Adjust for more/less shapes
+const numShapes = 12; // Increase for more shapes
 
 function resizeCanvas() {
   width = window.innerWidth;
@@ -19,7 +19,7 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// Initialize shapes with random positions, speeds, and colors
+// Initialize shapes with random positions and speeds
 function initShapes() {
   shapes = [];
   const shapeTypes = ['circle', 'triangle', 'square'];
@@ -28,18 +28,18 @@ function initShapes() {
     const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
 
     shapes.push({
-      type: type,
+      type,
       x: Math.random() * width,
       y: Math.random() * height,
-      size: 40 + Math.random() * 30, // 40-70
+      size: 40 + Math.random() * 30, 
       color: getRandomVaporwaveColor(),
-      vx: -0.5 + Math.random(), // random horizontal speed
-      vy: -0.5 + Math.random()  // random vertical speed
+      vx: -0.5 + Math.random(), // horizontal speed
+      vy: -0.5 + Math.random()  // vertical speed
     });
   }
 }
 
-// Returns a random translucent vaporwave color
+// Random vaporwave-ish outline color
 function getRandomVaporwaveColor() {
   const colors = [
     'rgba(255, 113, 206, 0.6)',  // pink
@@ -53,22 +53,22 @@ function getRandomVaporwaveColor() {
 
 initShapes();
 
-// Animate the drifting shapes
+// Animate the shapes
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
   shapes.forEach(shape => {
-    // Update position
+    // Move shape
     shape.x += shape.vx;
     shape.y += shape.vy;
 
-    // Wrap around edges
+    // Wrap edges
     if (shape.x < -50) shape.x = width + 50;
     if (shape.x > width + 50) shape.x = -50;
     if (shape.y < -50) shape.y = height + 50;
     if (shape.y > height + 50) shape.y = -50;
 
-    // Draw as an outline
+    // Draw outline
     ctx.strokeStyle = shape.color;
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -92,14 +92,14 @@ function animate() {
 animate();
 
 /************************************************************************
- * NAVBAR & FOOTER SCRIPTS
+ * NAVBAR MOBILE TOGGLE & FOOTER YEAR
  ************************************************************************/
 function toggleMenu() {
   const menu = document.querySelector('.menu');
   menu.classList.toggle('active');
 }
 
-// Close the menu on link click (mobile)
+// Close mobile menu on link click
 document.querySelectorAll('.menu a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.menu').classList.remove('active');
