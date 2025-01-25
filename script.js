@@ -1,16 +1,14 @@
 /************************************************************************
- * STARFIELD + RANDOM GEOMETRIC SHAPES BACKGROUND
+ * VAPORWAVE-INSPIRED GEOMETRIC SHAPES
  ************************************************************************/
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
 let width, height;
-let stars = [];
-const numStars = 150; // Adjust for more/less stars
 
-// We'll add random geometric shapes (circles, triangles, squares).
+// Array of drifting shapes
 let shapes = [];
-const numShapes = 8; // Adjust for more/less floating shapes
+const numShapes = 12; // Increase for more floating shapes
 
 function resizeCanvas() {
   width = window.innerWidth;
@@ -21,41 +19,29 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// Initialize stars
-function initStars() {
-  stars = [];
-  for (let i = 0; i < numStars; i++) {
-    stars.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      z: Math.random() * width
-    });
-  }
-}
-
 // Initialize shapes
 function initShapes() {
   shapes = [];
-  // We'll rotate between circle, triangle, and square
   const shapeTypes = ['circle', 'triangle', 'square'];
 
   for (let i = 0; i < numShapes; i++) {
     const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+    
     shapes.push({
       type: type,
       x: Math.random() * width,
       y: Math.random() * height,
-      size: 20 + Math.random() * 30,
+      size: 30 + Math.random() * 30, // 30-60 px
       color: getRandomVaporwaveColor(),
-      vx: -0.5 + Math.random(), // random horizontal speed
-      vy: -0.5 + Math.random()  // random vertical speed
+      vx: -0.5 + Math.random(), // random horizontal speed (-0.5 to +0.5)
+      vy: -0.5 + Math.random()  // random vertical speed (-0.5 to +0.5)
     });
   }
 }
 
-// Return a random translucent color from a vaporwave palette
+// Return a random translucent color from a vaporwave-like palette
 function getRandomVaporwaveColor() {
-  // Each has alpha ~0.4 or 0.5 for translucency
+  // Each has alpha to be partially translucent
   const colors = [
     'rgba(255, 113, 206, 0.5)',  // pink
     'rgba(1, 205, 254, 0.4)',    // cyan
@@ -66,42 +52,19 @@ function getRandomVaporwaveColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-// Initialize arrays
-initStars();
+// Create shape array
 initShapes();
 
-// Animate the canvas
+// Animate shapes
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
-  // 1) Starfield
-  for (let i = 0; i < numStars; i++) {
-    const star = stars[i];
-    star.z -= 2; // Move forward
-    if (star.z <= 0) {
-      // Reset star to the far plane
-      star.x = Math.random() * width;
-      star.y = Math.random() * height;
-      star.z = width;
-    }
-
-    // Perspective
-    const k = 128.0 / star.z; 
-    const sx = star.x * k + width / 2;
-    const sy = star.y * k + height / 2;
-    const size = (1 - star.z / width) * 2; // star size
-
-    ctx.fillStyle = '#ffffff'; // white star
-    ctx.fillRect(sx, sy, size, size);
-  }
-
-  // 2) Random Vaporwave Shapes
   shapes.forEach(shape => {
-    // Update position
+    // Move shape
     shape.x += shape.vx;
     shape.y += shape.vy;
 
-    // Wrap around edges
+    // If shape drifts off-screen, wrap it around
     if (shape.x < -50) shape.x = width + 50;
     if (shape.x > width + 50) shape.x = -50;
     if (shape.y < -50) shape.y = height + 50;
