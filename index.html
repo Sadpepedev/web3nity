@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web3nity - Neon Vaporwave + Unified CTAs</title>
+  <title>Web3nity - Unified CTA Hover</title>
 
   <!-- Basic Meta Description -->
   <meta 
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Canvas for free-floating neon shapes -->
+  <!-- Canvas for neon shapes -->
   <canvas id="bgCanvas"></canvas>
 
   <!-- Navigation Bar -->
@@ -53,7 +53,7 @@
       <p>
         Streamlined Discord moderation and web support for the next generation of decentralized platforms.
       </p>
-      <!-- Hero CTA (same side-fill animation) -->
+      <!-- Ensure we use the same CTA class -->
       <a href="#contact" class="cta-button">Contact Us</a>
     </div>
   </section>
@@ -63,7 +63,7 @@
     <h2>About Web3nity</h2>
     <p>
       At Web3nity, our mission is to provide top-notch support for Web3 projects, bridging the gap between decentralized technology and everyday users.
-      We specialize in Discord community management, website issue resolution, and educational content to empower users in this new digital frontier.
+      We specialize in Discord community management, issue resolution, and educational content.
     </p>
   </section>
 
@@ -73,15 +73,15 @@
     <div class="service-grid">
       <div class="service-card">
         <h3>Community Management</h3>
-        <p>Engage your community with events, AMA sessions, and educational content. We keep members excited.</p>
+        <p>Events, AMAs, and educational content to keep members informed and excited.</p>
       </div>
       <div class="service-card">
         <h3>Discord Moderation</h3>
-        <p>24/7 safe, spam-free environment. We focus on building trust while supporting your project’s vision.</p>
+        <p>24/7 safe environment, building trust while supporting your project’s vision.</p>
       </div>
       <div class="service-card">
         <h3>Growth & Marketing</h3>
-        <p>Targeted campaigns, influencer outreach, and community-driven growth hacks to expand your user base.</p>
+        <p>Influencer outreach, targeted campaigns, and community-driven growth hacks.</p>
       </div>
     </div>
   </section>
@@ -93,12 +93,12 @@
       <div class="founder">
         <img src="images/founder1.jpg" alt="Jane Doe">
         <h3>Jane Doe</h3>
-        <p>Veteran community manager with 5+ years in blockchain and Discord moderation, helping new users onboard to Web3.</p>
+        <p>Veteran community manager with years of experience in blockchain and Discord.</p>
       </div>
       <div class="founder">
         <img src="images/founder2.jpg" alt="John Smith">
         <h3>John Smith</h3>
-        <p>Full-stack developer turned Web3 enthusiast, resolving technical issues on front-end or back-end swiftly.</p>
+        <p>Full-stack developer turned Web3 enthusiast, resolving front-end or back-end issues swiftly.</p>
       </div>
     </div>
   </section>
@@ -108,7 +108,7 @@
     <h2>Our Clients</h2>
     <p>Trusted by leading projects in the crypto space</p>
     <div class="clients-logos">
-      <!-- Example brand logos -->
+      <!-- Sample logos -->
       <img src="images/client1.png" alt="Client 1">
       <img src="images/client2.png" alt="Client 2">
       <img src="images/client3.png" alt="Client 3">
@@ -121,9 +121,9 @@
     <h2>Our Pitch Deck</h2>
     <p>
       Curious about our roadmap, vision, and how we can help your Web3 project thrive?
-      Take a look at our pitch deck to learn more about what Web3nity can do for you.
+      Check out our pitch deck to learn more.
     </p>
-    <!-- Same side-fill animation -->
+    <!-- Same CTA button style -->
     <a href="docs/Web3nity-Pitch-Deck.pdf" target="_blank" class="cta-button">
       View Pitch Deck
     </a>
@@ -133,8 +133,8 @@
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <p>
-      Have any questions or want to learn more about our services?
-      Email us at <strong>contact@web3nity.xyz</strong> or fill out the form below:
+      Have questions or want to learn more?
+      Email <strong>contact@web3nity.xyz</strong> or fill out the form below:
     </p>
     <form>
       <div class="form-group">
@@ -149,7 +149,7 @@
         <label for="message">Message</label>
         <textarea id="message" rows="5" required></textarea>
       </div>
-      <!-- Same side-fill animation, centered -->
+      <!-- Also uses .cta-button -->
       <button type="submit" class="cta-button send-message-btn">Send Message</button>
     </form>
   </section>
@@ -167,7 +167,6 @@
     </div>
   </footer>
 
-  <!-- Drifting Shapes + Nav Script -->
   <script src="script.js"></script>
 </body>
 </html>
