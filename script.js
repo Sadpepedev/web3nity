@@ -8,9 +8,9 @@ let width, height;
 let stars = [];
 const numStars = 150; // Adjust for more/less stars
 
-// We can also add random geometric shapes
+// We'll add random geometric shapes (circles, triangles, squares).
 let shapes = [];
-const numShapes = 8; // Adjust to show more/less floating shapes
+const numShapes = 8; // Adjust for more/less floating shapes
 
 function resizeCanvas() {
   width = window.innerWidth;
@@ -18,7 +18,6 @@ function resizeCanvas() {
   canvas.width = width;
   canvas.height = height;
 }
-
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
@@ -37,6 +36,7 @@ function initStars() {
 // Initialize shapes
 function initShapes() {
   shapes = [];
+  // We'll rotate between circle, triangle, and square
   const shapeTypes = ['circle', 'triangle', 'square'];
 
   for (let i = 0; i < numShapes; i++) {
@@ -46,32 +46,40 @@ function initShapes() {
       x: Math.random() * width,
       y: Math.random() * height,
       size: 20 + Math.random() * 30,
-      color: getRandomColor(),
+      color: getRandomVaporwaveColor(),
       vx: -0.5 + Math.random(), // random horizontal speed
       vy: -0.5 + Math.random()  // random vertical speed
     });
   }
 }
 
-// Random bright color for shapes
-function getRandomColor() {
-  const colors = ['#00ffc8', '#a66afe', '#ff6ad5', '#6affef', '#ffe36a'];
+// Return a random translucent color from a vaporwave palette
+function getRandomVaporwaveColor() {
+  // Each has alpha ~0.4 or 0.5 for translucency
+  const colors = [
+    'rgba(255, 113, 206, 0.5)',  // pink
+    'rgba(1, 205, 254, 0.4)',    // cyan
+    'rgba(5, 255, 161, 0.4)',    // neon green
+    'rgba(185, 103, 255, 0.5)',  // purple
+    'rgba(255, 154, 255, 0.4)'   // pastel pink
+  ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
+// Initialize arrays
 initStars();
 initShapes();
 
-// Animate everything
+// Animate the canvas
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
   // 1) Starfield
   for (let i = 0; i < numStars; i++) {
     const star = stars[i];
-    // Move star forward
-    star.z -= 2;
+    star.z -= 2; // Move forward
     if (star.z <= 0) {
+      // Reset star to the far plane
       star.x = Math.random() * width;
       star.y = Math.random() * height;
       star.z = width;
@@ -81,19 +89,19 @@ function animate() {
     const k = 128.0 / star.z; 
     const sx = star.x * k + width / 2;
     const sy = star.y * k + height / 2;
-    const size = (1 - star.z / width) * 2;
+    const size = (1 - star.z / width) * 2; // star size
 
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#ffffff'; // white star
     ctx.fillRect(sx, sy, size, size);
   }
 
-  // 2) Random Shapes
+  // 2) Random Vaporwave Shapes
   shapes.forEach(shape => {
     // Update position
     shape.x += shape.vx;
     shape.y += shape.vy;
 
-    // Wrap shapes if they go off-screen
+    // Wrap around edges
     if (shape.x < -50) shape.x = width + 50;
     if (shape.x > width + 50) shape.x = -50;
     if (shape.y < -50) shape.y = height + 50;
@@ -104,7 +112,7 @@ function animate() {
     ctx.beginPath();
 
     if (shape.type === 'circle') {
-      ctx.arc(shape.x, shape.y, shape.size * 0.5, 0, Math.PI * 2);
+      ctx.arc(shape.x, shape.y, shape.size / 2, 0, Math.PI * 2);
     } else if (shape.type === 'triangle') {
       ctx.moveTo(shape.x, shape.y - shape.size / 2);
       ctx.lineTo(shape.x - shape.size / 2, shape.y + shape.size / 2);
@@ -119,7 +127,6 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-
 animate();
 
 /************************************************************************
@@ -130,7 +137,7 @@ function toggleMenu() {
   menu.classList.toggle('active');
 }
 
-// Close the menu on link click
+// Close the menu when a link is clicked (mobile)
 document.querySelectorAll('.menu a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.menu').classList.remove('active');
