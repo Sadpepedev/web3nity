@@ -16,19 +16,40 @@ function resizeCanvas() {
   canvas.width = width;
   canvas.height = height;
 }
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-// Initialize shapes with random positions, speeds, and colors
-function initShapes() {
-  shapes = [];
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
   const shapeTypes = ['circle', 'triangle', 'square'];
 
   for (let i = 0; i < numShapes; i++) {
     const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
 
+    if (shapes[i]) {
+      // Update existing shape
+      shapes[i].type = type;
+      shapes[i].x = Math.random() * width;
+      shapes[i].y = Math.random() * height;
+      shapes[i].size = 40 + Math.random() * 30; // 40-70
+      shapes[i].color = getRandomVaporwaveColor();
+    const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+
     shapes.push({
       type: type,
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: 40 + Math.random() * 30, // 40-70
+      color: getRandomVaporwaveColor(),
+      vx: getRandomVelocity(), // random horizontal speed
+      vy: getRandomVelocity()  // random vertical speed
+    });
+        vy: -0.5 + Math.random()  // random vertical speed
+      });
+    }
+  }
       x: Math.random() * width,
       y: Math.random() * height,
       size: 40 + Math.random() * 30, // 40-70
@@ -40,7 +61,12 @@ function initShapes() {
 }
 
 // Returns a random translucent vaporwave color
-function getRandomVaporwaveColor() {
+// Helper function to generate random velocity between -0.5 and 0.5
+function getRandomVelocity() {
+  return -0.5 + Math.random();
+}
+
+initShapes();
   const colors = [
     'rgba(255, 113, 206, 0.6)',  // pink
     'rgba(1, 205, 254, 0.5)',    // cyan
@@ -50,14 +76,11 @@ function getRandomVaporwaveColor() {
   ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
-
-initShapes();
-
-// Animate the drifting shapes
-function animate() {
-  ctx.clearRect(0, 0, width, height);
-
+  ctx.lineWidth = 2;
   shapes.forEach(shape => {
+    // Clear the previous shape position
+    ctx.clearRect(shape.x - shape.size / 2 - 2, shape.y - shape.size / 2 - 2, shape.size + 4, shape.size + 4);
+
     // Update position
     shape.x += shape.vx;
     shape.y += shape.vy;
@@ -70,11 +93,11 @@ function animate() {
 
     // Draw as an outline
     ctx.strokeStyle = shape.color;
-    ctx.lineWidth = 2;
     ctx.beginPath();
 
     if (shape.type === 'circle') {
-      ctx.arc(shape.x, shape.y, shape.size / 2, 0, Math.PI * 2);
+      const radius = shape.size / 2;
+      ctx.arc(shape.x, shape.y, radius, 0, Math.PI * 2);
     } else if (shape.type === 'triangle') {
       ctx.moveTo(shape.x, shape.y - shape.size / 2);
       ctx.lineTo(shape.x - shape.size / 2, shape.y + shape.size / 2);
@@ -83,6 +106,11 @@ function animate() {
     } else if (shape.type === 'square') {
       ctx.rect(shape.x - shape.size / 2, shape.y - shape.size / 2, shape.size, shape.size);
     }
+
+    ctx.stroke();
+  });
+
+  requestAnimationFrame(animate);
 
     ctx.stroke();
   });
