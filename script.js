@@ -1,12 +1,14 @@
-// Canvas & context
+/************************************************************************
+ * FREE-FLOATING, OUTLINE-ONLY VAPORWAVE SHAPES
+ ************************************************************************/
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
 let width, height;
 
-// Drifting shapes array
+// Array to store shape objects
 let shapes = [];
-const numShapes = 12; // You can increase this for more shapes
+const numShapes = 12; // Adjust for more/less shapes
 
 function resizeCanvas() {
   width = window.innerWidth;
@@ -17,14 +19,14 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// Initialize shapes
+// Initialize shapes with random positions, speeds, and colors
 function initShapes() {
   shapes = [];
   const shapeTypes = ['circle', 'triangle', 'square'];
 
   for (let i = 0; i < numShapes; i++) {
     const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
-    
+
     shapes.push({
       type: type,
       x: Math.random() * width,
@@ -37,7 +39,7 @@ function initShapes() {
   }
 }
 
-// Return a random translucent vaporwave color for outlines
+// Returns a random translucent vaporwave color
 function getRandomVaporwaveColor() {
   const colors = [
     'rgba(255, 113, 206, 0.6)',  // pink
@@ -51,7 +53,7 @@ function getRandomVaporwaveColor() {
 
 initShapes();
 
-// Animate shapes
+// Animate the drifting shapes
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
@@ -66,7 +68,7 @@ function animate() {
     if (shape.y < -50) shape.y = height + 50;
     if (shape.y > height + 50) shape.y = -50;
 
-    // Draw outline shape
+    // Draw as an outline
     ctx.strokeStyle = shape.color;
     ctx.lineWidth = 2;
     ctx.beginPath();
