@@ -1,6 +1,6 @@
-/* ==============================================
-   1. RESET & GLOBAL STYLES
-   ============================================== */
+/* =========================================================
+   1. RESET / GLOBAL
+   ========================================================= */
    * {
     margin: 0;
     padding: 0;
@@ -11,31 +11,28 @@
     width: 100%;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
+    color: #fff; /* Default text color */
     background: #0f0f0f; /* Fallback dark background */
-    color: #fff;
   }
   
-  /* Smooth scrolling for anchor links */
   html {
     scroll-behavior: smooth;
   }
   
-  /* ==============================================
-     2. STARFIELD CANVAS
-     ============================================== */
-  #starCanvas {
+  /* Canvas behind all content */
+  #bgCanvas {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -1; /* Place it behind all sections */
     width: 100%;
     height: 100%;
-    z-index: -1; /* Behind all other elements */
     background: #0f0f0f; /* fallback color if JS is disabled */
   }
   
-  /* ==============================================
-     3. NAVIGATION BAR
-     ============================================== */
+  /* =========================================================
+     2. NAVBAR
+     ========================================================= */
   .navbar {
     position: sticky;
     top: 0;
@@ -46,12 +43,12 @@
   }
   
   .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
   
   .logo {
@@ -62,6 +59,7 @@
     letter-spacing: 1px;
   }
   
+  /* Desktop menu */
   .menu {
     display: flex;
     gap: 1.5rem;
@@ -78,13 +76,14 @@
     color: #00ffc8;
   }
   
-  /* Hamburger */
+  /* Hamburger icon (hidden on desktop) */
   .hamburger {
     display: none;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
   }
+  
   .hamburger span {
     width: 25px;
     height: 3px;
@@ -92,7 +91,7 @@
     transition: 0.3s;
   }
   
-  /* Mobile toggle menu */
+  /* Mobile menu toggle */
   .menu.active {
     display: flex;
     flex-direction: column;
@@ -105,11 +104,11 @@
     border-radius: 5px;
   }
   
-  /* ==============================================
-     4. HERO SECTION
-     ============================================== */
+  /* =========================================================
+     3. HERO SECTION
+     ========================================================= */
   .hero {
-    min-height: 80vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,9 +133,9 @@
     line-height: 1.6;
   }
   
-  /* ==============================================
-     5. CTA BUTTON STYLES
-     ============================================== */
+  /* =========================================================
+     4. CTA BUTTON
+     ========================================================= */
   .cta-button {
     background: none;
     color: #fff;
@@ -146,9 +145,9 @@
     border-radius: 4px;
     font-family: 'Orbitron', sans-serif;
     font-weight: 600;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
   }
   
   .cta-button::before {
@@ -173,17 +172,23 @@
     border-color: #00ffc8;
   }
   
-  /* ==============================================
+  /* =========================================================
+     5. SECTION HEADINGS
+     ========================================================= */
+  section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 2rem 0 1rem 0;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  /* =========================================================
      6. ABOUT SECTION
-     ============================================== */
+     ========================================================= */
   .about {
     padding: 2rem 1rem;
     text-align: center;
-  }
-  
-  .about h2 {
-    font-family: 'Orbitron', sans-serif;
-    margin-bottom: 1rem;
   }
   
   .about p {
@@ -192,9 +197,123 @@
     line-height: 1.6;
   }
   
-  /* ==============================================
-     7. CONTACT SECTION
-     ============================================== */
+  /* =========================================================
+     7. SERVICES SECTION
+     ========================================================= */
+  .services {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .service-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+  }
+  
+  .service-card {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 300px;
+    min-height: 220px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    color: #a66afe;
+  }
+  
+  /* =========================================================
+     8. FOUNDERS SECTION
+     ========================================================= */
+  .founders {
+    padding: 2rem 1rem;
+  }
+  
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+  
+  .founder {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .founder img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 2px solid #a66afe;
+  }
+  .founder h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #a66afe;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* =========================================================
+     9. CLIENTS SECTION
+     ========================================================= */
+  .clients {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .clients-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .clients-logos img {
+    width: 120px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+  
+  .clients-logos img:hover {
+    filter: grayscale(0%);
+  }
+  
+  /* =========================================================
+     10. PITCHDECK SECTION
+     ========================================================= */
+  .pitchdeck {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .pitchdeck p {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.6;
+  }
+  
+  /* =========================================================
+     11. CONTACT SECTION
+     ========================================================= */
   .contact {
     padding: 2rem 1rem;
     text-align: center;
@@ -209,13 +328,11 @@
   .form-group {
     margin-bottom: 1rem;
   }
-  
   .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
   }
-  
   .form-group input, 
   .form-group textarea {
     width: 100%;
@@ -226,9 +343,9 @@
     color: #fff;
   }
   
-  /* ==============================================
-     8. FOOTER
-     ============================================== */
+  /* =========================================================
+     12. FOOTER
+     ========================================================= */
   .footer {
     background: #000;
     padding: 1rem 2rem;
@@ -237,18 +354,32 @@
   
   .footer-content p {
     margin: 0.5rem 0;
-    color: #fff;
   }
   
-  /* ==============================================
-     9. RESPONSIVE STYLES
-     ============================================== */
+  .footer-links a {
+    color: #00ffc8;
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  /* =========================================================
+     13. RESPONSIVE STYLES
+     ========================================================= */
   @media (max-width: 768px) {
     .hamburger {
       display: flex;
     }
     .menu {
       display: none;
+    }
+  
+    .founder-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .service-grid {
+      flex-direction: column;
+      align-items: center;
     }
   }
   
