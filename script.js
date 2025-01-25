@@ -1,14 +1,12 @@
 /************************************************************************
- * FREE-FLOATING VAPORWAVE SHAPES (OUTLINES)
+ * NEON SHAPES
  ************************************************************************/
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
 let width, height;
-
-// We'll have an array of shapes that drift around
+const numShapes = 12; // Adjust as needed
 let shapes = [];
-const numShapes = 12; // Increase for more shapes
 
 function resizeCanvas() {
   width = window.innerWidth;
@@ -16,10 +14,10 @@ function resizeCanvas() {
   canvas.width = width;
   canvas.height = height;
 }
+
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// Initialize shapes with random positions and speeds
 function initShapes() {
   shapes = [];
   const shapeTypes = ['circle', 'triangle', 'square'];
@@ -31,22 +29,23 @@ function initShapes() {
       type,
       x: Math.random() * width,
       y: Math.random() * height,
-      size: 40 + Math.random() * 30, 
-      color: getRandomVaporwaveColor(),
-      vx: -0.5 + Math.random(), // horizontal speed
-      vy: -0.5 + Math.random()  // vertical speed
+      size: 40 + Math.random() * 30,
+      color: getNeonColor(),
+      vx: -0.5 + Math.random(),
+      vy: -0.5 + Math.random(),
     });
   }
 }
 
-// Random vaporwave-ish outline color
-function getRandomVaporwaveColor() {
+// Brighter 80s neon
+function getNeonColor() {
   const colors = [
-    'rgba(255, 113, 206, 0.6)',  // pink
-    'rgba(1, 205, 254, 0.5)',    // cyan
-    'rgba(5, 255, 161, 0.5)',    // neon green
-    'rgba(185, 103, 255, 0.7)',  // purple
-    'rgba(255, 154, 255, 0.5)'   // pastel pink
+    'rgba(255, 0, 128, 0.8)',   // hot pink
+    'rgba(0, 255, 255, 0.8)',   // aqua
+    'rgba(255, 255, 0, 0.8)',   // yellow
+    'rgba(255, 0, 255, 0.8)',   // magenta
+    'rgba(0, 255, 0, 0.8)',     // lime
+    'rgba(0, 128, 255, 0.8)'    // bright blue
   ];
   return colors[Math.floor(Math.random() * colors.length)];
 }
@@ -58,17 +57,16 @@ function animate() {
   ctx.clearRect(0, 0, width, height);
 
   shapes.forEach(shape => {
-    // Move shape
     shape.x += shape.vx;
     shape.y += shape.vy;
 
-    // Wrap edges
+    // Wrap around screen edges
     if (shape.x < -50) shape.x = width + 50;
     if (shape.x > width + 50) shape.x = -50;
     if (shape.y < -50) shape.y = height + 50;
     if (shape.y > height + 50) shape.y = -50;
 
-    // Draw outline
+    // Draw shape outline
     ctx.strokeStyle = shape.color;
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -92,21 +90,20 @@ function animate() {
 animate();
 
 /************************************************************************
- * NAVBAR MOBILE TOGGLE & FOOTER YEAR
+ * NAV MENU / FOOTER YEAR
  ************************************************************************/
 function toggleMenu() {
   const menu = document.querySelector('.menu');
   menu.classList.toggle('active');
 }
 
-// Close mobile menu on link click
 document.querySelectorAll('.menu a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.menu').classList.remove('active');
   });
 });
 
-// Display current year in footer
+// Footer year
 const yearSpan = document.getElementById('year');
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
