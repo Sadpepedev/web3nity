@@ -1,66 +1,48 @@
-/************************************************************************
- * PARALLAX OUTLINED VAPORWAVE SHAPES
- ************************************************************************/
+// Canvas & context
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 
-// We'll track the current scroll position
-let scrollOffset = 0;
+let width, height;
 
-// Size of entire page
-let width, height, docHeight;
-
+// Drifting shapes array
 let shapes = [];
-const numShapes = 12; // Adjust for more or fewer shapes
+const numShapes = 12; // You can increase this for more shapes
 
-function measureCanvas() {
-  // Full width is always viewport width
+function resizeCanvas() {
   width = window.innerWidth;
-  // Full height is the total scrollable height of the document
-  docHeight = document.body.scrollHeight;
-  height = docHeight;
-
+  height = window.innerHeight;
   canvas.width = width;
   canvas.height = height;
 }
-
-// Make sure we recalc on load and resize
-window.addEventListener('resize', measureCanvas);
-measureCanvas();
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 // Initialize shapes
 function initShapes() {
+  shapes = [];
   const shapeTypes = ['circle', 'triangle', 'square'];
 
-  shapes = [];
   for (let i = 0; i < numShapes; i++) {
     const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
     
-    // Random positions across entire doc height
-    const baseX = Math.random() * width;
-    const baseY = Math.random() * height;
-
-    // Parallax factor: 0.1 - 0.5 => moves slower than scroll
-    // or tweak if you want some shapes faster than scroll
-    const parallaxFactor = 0.1 + Math.random() * 0.4;
-
     shapes.push({
-      type,
-      baseX,
-      baseY,
+      type: type,
+      x: Math.random() * width,
+      y: Math.random() * height,
       size: 40 + Math.random() * 30, // 40-70
       color: getRandomVaporwaveColor(),
-      parallax: parallaxFactor
+      vx: -0.5 + Math.random(), // random horizontal speed
+      vy: -0.5 + Math.random()  // random vertical speed
     });
   }
 }
 
+// Return a random translucent vaporwave color for outlines
 function getRandomVaporwaveColor() {
-  // Slightly translucent outlines
   const colors = [
-    'rgba(255, 113, 206, 0.7)',  // pink
-    'rgba(1, 205, 254, 0.6)',    // cyan
-    'rgba(5, 255, 161, 0.6)',    // neon green
+    'rgba(255, 113, 206, 0.6)',  // pink
+    'rgba(1, 205, 254, 0.5)',    // cyan
+    'rgba(5, 255, 161, 0.5)',    // neon green
     'rgba(185, 103, 255, 0.7)',  // purple
     'rgba(255, 154, 255, 0.5)'   // pastel pink
   ];
@@ -69,19 +51,20 @@ function getRandomVaporwaveColor() {
 
 initShapes();
 
-// Listen for scroll changes
-window.addEventListener('scroll', () => {
-  scrollOffset = window.scrollY || window.pageYOffset;
-});
-
-// Render loop
+// Animate shapes
 function animate() {
   ctx.clearRect(0, 0, width, height);
 
   shapes.forEach(shape => {
-    // Calculate shape’s parallax-based Y position
-    const parallaxY = shape.baseY - scrollOffset * shape.parallax;
-    const x = shape.baseX; // No horizontal parallax in this example
+    // Update position
+    shape.x += shape.vx;
+    shape.y += shape.vy;
+
+    // Wrap around edges
+    if (shape.x < -50) shape.x = width + 50;
+    if (shape.x > width + 50) shape.x = -50;
+    if (shape.y < -50) shape.y = height + 50;
+    if (shape.y > height + 50) shape.y = -50;
 
     // Draw outline shape
     ctx.strokeStyle = shape.color;
@@ -89,14 +72,14 @@ function animate() {
     ctx.beginPath();
 
     if (shape.type === 'circle') {
-      ctx.arc(x, parallaxY, shape.size / 2, 0, Math.PI * 2);
+      ctx.arc(shape.x, shape.y, shape.size / 2, 0, Math.PI * 2);
     } else if (shape.type === 'triangle') {
-      ctx.moveTo(x, parallaxY - shape.size / 2);
-      ctx.lineTo(x - shape.size / 2, parallaxY + shape.size / 2);
-      ctx.lineTo(x + shape.size / 2, parallaxY + shape.size / 2);
+      ctx.moveTo(shape.x, shape.y - shape.size / 2);
+      ctx.lineTo(shape.x - shape.size / 2, shape.y + shape.size / 2);
+      ctx.lineTo(shape.x + shape.size / 2, shape.y + shape.size / 2);
       ctx.closePath();
     } else if (shape.type === 'square') {
-      ctx.rect(x - shape.size / 2, parallaxY - shape.size / 2, shape.size, shape.size);
+      ctx.rect(shape.x - shape.size / 2, shape.y - shape.size / 2, shape.size, shape.size);
     }
 
     ctx.stroke();
@@ -107,21 +90,21 @@ function animate() {
 animate();
 
 /************************************************************************
- * NAVBAR MOBILE TOGGLE & YEAR FOOTER
+ * NAVBAR & FOOTER SCRIPTS
  ************************************************************************/
 function toggleMenu() {
   const menu = document.querySelector('.menu');
   menu.classList.toggle('active');
 }
 
-// Close mobile menu on link click
+// Close the menu on link click (mobile)
 document.querySelectorAll('.menu a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.menu').classList.remove('active');
   });
 });
 
-// Footer Year
+// Display current year in footer
 const yearSpan = document.getElementById('year');
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();

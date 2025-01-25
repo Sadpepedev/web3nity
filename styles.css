@@ -7,7 +7,7 @@
 
 html, body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
   background: #0f0f0f; /* fallback dark background */
@@ -16,12 +16,12 @@ html, body {
 
 /* Canvas behind everything */
 #bgCanvas {
-  position: absolute; /* We'll size it to full document height below */
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
   width: 100%;
-  /* height will be set by script.js to match document height */
+  height: 100%;
   background: #0f0f0f; /* fallback color if JS is disabled */
 }
 
@@ -299,6 +299,12 @@ section h2 {
   border-radius: 4px;
   background: #1b1b1b;
   color: #fff;
+}
+
+/* Center the Send Message button */
+.send-message-btn {
+  display: block;
+  margin: 1rem auto 0 auto; 
 }
 
 /* FOOTER */

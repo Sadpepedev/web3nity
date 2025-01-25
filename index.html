@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web3nity - Parallax Shapes</title>
+  <title>Web3nity - Free-Floating Shapes</title>
 
   <!-- Meta Description -->
   <meta 
@@ -11,18 +11,18 @@
     content="Web3nity is a futuristic Web3 support agency specializing in community management, moderation, and growth strategies for crypto projects."
   />
 
-  <!-- Fonts -->
+  <!-- Google Fonts: Orbitron (for headlines) & Open Sans (for body text) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link 
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Open+Sans:wght@400;700&display=swap" 
     rel="stylesheet"
   />
-  
-  <!-- Styles -->
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Canvas behind the entire page -->
+  <!-- Canvas for free-floating shapes -->
   <canvas id="bgCanvas"></canvas>
 
   <!-- Navigation Bar -->
@@ -157,7 +157,8 @@
         <label for="message">Message</label>
         <textarea id="message" rows="5" required></textarea>
       </div>
-      <button type="submit" class="cta-button">Send Message</button>
+      <!-- Centered Send Message button -->
+      <button type="submit" class="cta-button send-message-btn">Send Message</button>
     </form>
   </section>
 
@@ -174,7 +175,7 @@
     </div>
   </footer>
 
-  <!-- Parallax Shapes Script -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
