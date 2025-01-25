@@ -16,6 +16,7 @@ function resizeCanvas() {
   canvas.width = width;
   canvas.height = height;
 }
+
 function debounce(func, wait) {
   let timeout;
   return function(...args) {
@@ -44,22 +45,28 @@ function debounce(func, wait) {
       size: 40 + Math.random() * 30, // 40-70
       color: getRandomVaporwaveColor(),
       vx: getRandomVelocity(), // random horizontal speed
-      vy: getRandomVelocity()  // random vertical speed
-    });
-        vy: -0.5 + Math.random()  // random vertical speed
-      });
+          shapes[i].vx = getRandomVelocity(); // random horizontal speed
+          shapes[i].vy = getRandomVelocity(); // random vertical speed
+        } else {
+          // Create new shape
+          shapes.push({
+            type: type,
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: 40 + Math.random() * 30, // 40-70
+            color: getRandomVaporwaveColor(),
+            vx: getRandomVelocity(), // random horizontal speed
+            vy: getRandomVelocity()  // random vertical speed
+          });
+        }
+      }
     }
   }
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: 40 + Math.random() * 30, // 40-70
-      color: getRandomVaporwaveColor(),
-      vx: -0.5 + Math.random(), // random horizontal speed
       vy: -0.5 + Math.random()  // random vertical speed
-    });
-  }
-}
-
+  ;
+  
+function getRandomVaporwaveColor() {
+  const colors = [
 // Returns a random translucent vaporwave color
 // Helper function to generate random velocity between -0.5 and 0.5
 function getRandomVelocity() {
@@ -68,7 +75,23 @@ function getRandomVelocity() {
 
 initShapes();
   const colors = [
-    'rgba(255, 113, 206, 0.6)',  // pink
+  function initShapes() {
+    for (let i = 0; i < numShapes; i++) {
+      const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+      shapes.push({
+        type: type,
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: 40 + Math.random() * 30, // 40-70
+        color: getRandomVaporwaveColor(),
+        vx: getRandomVelocity(), // random horizontal speed
+        vy: getRandomVelocity()  // random vertical speed
+      });
+    }
+  }
+  
+  function animate() {
+    ctx.lineWidth = 2;
     'rgba(1, 205, 254, 0.5)',    // cyan
     'rgba(5, 255, 161, 0.5)',    // neon green
     'rgba(185, 103, 255, 0.7)',  // purple
@@ -88,12 +111,12 @@ initShapes();
     // Wrap around edges
     if (shape.x < -50) shape.x = width + 50;
     if (shape.x > width + 50) shape.x = -50;
-    if (shape.y < -50) shape.y = height + 50;
-    if (shape.y > height + 50) shape.y = -50;
+  requestAnimationFrame(animate);
+}
 
-    // Draw as an outline
-    ctx.strokeStyle = shape.color;
-    ctx.beginPath();
+initShapes();
+resizeCanvas();
+animate();
 
     if (shape.type === 'circle') {
       const radius = shape.size / 2;
