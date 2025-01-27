@@ -131,49 +131,36 @@
   /* =========================================================
      4. CTA BUTTONS (UNIFIED STYLE)
      ========================================================= */
-  .cta-button {
-    background: none;
-    color: #fff;
-    padding: 0.8rem 1.6rem;
-    text-decoration: none;
-    border: 2px solid #00ffc8;
-    border-radius: 4px;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
+  /* =========================================================
+   4. CTA BUTTONS (UNIFIED STYLE)
+   ========================================================= */
+.cta-button {
+  display: inline-block; /* Added this line */
+  background: none;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  border: 2px solid #00ffc8;
+  border-radius: 4px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Modified send-message-btn */
+.send-message-btn {
+  margin-top: 1rem; /* Simplified from previous version */
+}
+
+/* Updated contact form alignment */
+.contact form {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  text-align: center; /* Added this line */
+}
   
-  /* Slide-in fill from right to left */
-  .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(0,255,200,0.2), rgba(0,255,200,0.8));
-    transform: skewX(-20deg);
-    transition: 0.5s;
-    z-index: -1;
-  }
-  
-  .cta-button:hover::before {
-    left: -10%;
-  }
-  
-  .cta-button:hover {
-    color: #0f0f0f;
-    background: #00ffc8;
-    border-color: #00ffc8;
-  }
-  
-  /* Extra class to center the "Send Message" button in the form */
-  .send-message-btn {
-    display: block;
-    margin: 1rem auto 0 auto;
-  }
   
   /* =========================================================
      5. SECTIONS (ABOUT, SERVICES, ETC.)
